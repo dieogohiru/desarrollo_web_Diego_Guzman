@@ -1,1 +1,1 @@
-# desarrollo_web_Diego_Guzman
+Para que se pudiera visualizar los graficos y la tabla de miembros le pedi a chatgpt que cree una tabla que contenga nombres, correos, actividades y nombre de activdades, para simular una pequqeña base de datos, con esos datos cree los graficos de barra y la tabla.

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCC - Listado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Lista de Miembros</h1>
+        <nav>
+            <a class="navbar-page" href="index.html">Volver al Menú Principal</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="section-container">
+            <header class="filtros-container">
+                <input type="text" id="busqueda" placeholder="Buscar por nombre..." oninput="actualizarTodo()">
+                
+                <select id="filtro-tipo" onchange="actualizarTodo()">
+                    <option value="">Todos los Miembros</option>
+                    <option value="estudiante_pre">Estudiante Pregrado</option>
+                    <option value="estudiante_post">Estudiante Postgrado</option>
+                    <option value="funcionario">Funcionario</option>
+                    <option value="academico">Académico</option>
+                </select>
+
+                <select id="filtro-actividad" onchange="actualizarTodo()">
+                    <option value="">Todas las Actividades</option>
+                    <option value="artistica">Artística</option>
+                    <option value="deportiva">Deportiva</option>
+                    <option value="tecnologica">Tecnológica</option>
+                    <option value="social">Social</option>
+                    <option value="recreativa">Recreativa</option>
+                </select>
+            </header>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-miembros">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo de Miembro</th>
+                            <th>Tipo de Actividad</th>
+                            <th>Nombre de la Actividad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <footer class="paginacion">
+                <button onclick="cambiarPagina(-1)">Anterior</button>
+                <span id="info-pag"></span>
+                <button onclick="cambiarPagina(1)">Siguiente</button>
+            </footer>
+        </div>
+    </main>
+    <script src="validador.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+body { 
+    font-family: sans-serif; 
+    background: #f4f7f6; 
+    color: #333; 
+    line-height: 1.6;
+}
+
+.navbar { 
+    background: #53c8cc; 
+    color: white; 
+    padding: 20px; 
+    display: flex; 
+    gap: 25px; 
+    align-items: center;
+}
+
+.navbar-page { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+.navbar-page:hover {
+    text-decoration: underline;
+}
+
+.botones-menu { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+    margin-top: 40px; 
+}
+
+.btn-menu { 
+    display: block; 
+    padding: 20px; 
+    background: #53c8cc; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    font-size: 16px; 
+    transition: background 0.3s ease;
+}
+
+.btn-menu:hover {
+    background: #99b9da;
+}
+
+.container { 
+    background: white; 
+    padding: 40px; 
+    border-radius: 8px; 
+    max-width: 550px; 
+    margin: 50px auto; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+.grupo-input { 
+    margin-bottom: 25px; 
+}
+
+.grupo-input label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+}
+
+.grupo-input input, 
+.grupo-input select{ 
+    width: 96%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 14px;
+}
+
+.input-prefijo {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden; 
+}
+
+.input-prefijo span {
+    padding: 10px 15px;
+    background-color: #eee;
+    border-right: 1px solid #ccc;
+    color: #555;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.input-prefijo input {
+    border: none; 
+    padding: 12px;
+    flex-grow: 1;
+    outline: none;
+}
+
+.main-container { 
+    max-width: 1100px; 
+    margin: 30px auto; 
+    padding: 0 20px; 
+}
+
+.section-container { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(49, 49, 49, 0.712); 
+}
+
+.filtros-container { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+}
+
+th, td { 
+    border-bottom: 1px solid #eee; 
+    padding: 15px; 
+    text-align: left; 
+}
+
+th {
+    background-color: #fafafa;
+    color: #53c8cc;
+}
+
+.metrics-grid { 
+    display: flex; 
+    gap: 30px; 
+}
+
+.metric-card { 
+    flex: 1; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+}
+
+.bar-label { 
+    font-size: 13px; 
+    margin-top: 15px; 
+    font-weight: bold;
+}
+
+.bar-bg { 
+    background: #eee; 
+    height: 12px; 
+    border-radius: 6px; 
+    margin-top: 5px; 
+    overflow: hidden; 
+}
+
+.bar-fill { 
+    height: 100%; 
+}
+
+button {
+    cursor: pointer;
+    background: #53c8cc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #53c8cc;
+}
+
+.paginacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
