@@ -1,0 +1,304 @@
+body { 
+    font-family: sans-serif; 
+    background: #f4f7f6; 
+    color: #333; 
+    line-height: 1.6;
+}
+
+.main-container { 
+    max-width: 1100px; 
+    margin: 30px auto; 
+    padding: 0 20px; 
+}
+
+.container { 
+    background: white; 
+    padding: 40px; 
+    border-radius: 8px; 
+    max-width: 1000px; 
+    margin: 50px auto; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+.section-container { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(49, 49, 49, 0.712); 
+}
+
+.navbar { 
+    background: #53c8cc; 
+    color: white; 
+    padding: 20px; 
+    display: flex; 
+    gap: 25px; 
+    align-items: center;
+}
+
+.navbar-page { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+button, .button, .btn-volver {
+    cursor: pointer;
+    background: #53c8cc;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.botones-menu { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px;
+    margin-top: 25px; 
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.btn-menu { 
+    display: block; 
+    width: 80%; 
+    padding: 15px; 
+    background: #53c8cc; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    font-size: 16px;
+    text-align: center;
+}
+
+.btn-azul { 
+    background-color: #679cda; 
+}
+.btn-limpiar { 
+    background-color: #999; 
+    padding: 8px 15px; 
+    font-size: 0.85em; 
+}
+
+.grupo-input { 
+    margin-bottom: 25px; 
+}
+.grupo-input label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+}
+
+.grupo-input input, 
+.grupo-input select, 
+.input-busqueda, 
+.select-comuna { 
+    width: 96%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 14px;
+}
+
+.input-prefijo, .fila-telefono { 
+    display: flex; 
+    align-items: center; 
+}
+
+.prefijo-cl {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-weight: bold;
+}
+
+.input-telefono { 
+    border-radius: 0 4px 4px 0; 
+    flex-grow: 1; 
+}
+
+.tabla-contenedor, .tabla-contenedor-portada { 
+    overflow-x: auto; 
+    margin-top: 20px; 
+}
+
+table, .tabla-portada { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 0 auto;
+}
+
+th, td { 
+    border-bottom: 1px solid #eee; 
+    padding: 15px; 
+    text-align: left; 
+}
+
+th { 
+    background-color: #fafafa; 
+    color: #53c8cc; 
+}
+
+.fila-encabezado { 
+    background-color: #f2f2f2; 
+}
+
+.alert{ 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    border-radius: 5px; 
+    font-weight: bold; 
+}
+
+.alert-error { 
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb; 
+}
+
+.alert-success { 
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb; 
+}
+
+.actividad-card { 
+    border: 1px solid #eee; 
+    padding: 25px; 
+    margin-bottom: 30px; 
+    border-radius: 8px; 
+    background: #fafafa; 
+}
+
+.actividad-titulo { 
+    color: #53c8cc; 
+    border-bottom: 2px solid #53c8cc; 
+    display: inline-block;
+}
+
+.media-content, .grafico-img { 
+    max-width: 100%; 
+    height: auto; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    display: block; 
+}
+
+.media-content { 
+    width: 250px; 
+    height: 180px; 
+    object-fit: cover; 
+}
+
+.paginacion, .contenedor-botones-registro, .contenedor-boton-volver { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+    margin-top: 30px; 
+}
+
+.ultimos-miembros table {
+    margin: 20px auto;
+    width: 95%;
+    border-collapse: collapse;
+    border: 1px solid #ccc; 
+}
+
+.ultimos-miembros th {
+    background-color: #f2f2f2; 
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.ultimos-miembros td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.alerta-flash {
+    margin: 20px auto;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #d4edda; 
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    font-weight: bold;
+    text-align: center;
+}
+
+.portada-main {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.filtros-container { 
+    margin-bottom: 25px; 
+}
+
+.formulario-filtros {
+    display: flex; 
+    flex-direction: row; 
+    gap: 10px; 
+    width: 100%; 
+    align-items: center; 
+    justify-content: flex-start; 
+}
+
+.input-busqueda {
+    flex: 2; 
+    padding: 10px;
+}
+
+.select-comuna {
+    flex: 1; 
+    padding: 10px;
+}
+
+.formulario-filtros button, 
+.btn-limpiar {
+    margin: 0; 
+    white-space: nowrap; 
+}
+
+.btn-paginacion {
+    text-decoration: none;
+    background-color: #53c8cc; 
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    display: inline-block;
+}
+
+.indicador-pagina {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.tabla-portada { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 0 auto;
+    border: 1px solid #ccc; 
+}
+
+.tabla-portada th, 
+.tabla-portada td { 
+    border: 1px solid #eee;
+    padding: 15px; 
+    text-align: left; 
+}
