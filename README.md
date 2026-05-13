@@ -1,1 +1,1 @@
-# desarrollo_web_Diego_Guzman
+Tuve que eliminar cosas que habia puesto en la tarea 1, como mi lista inventada de miembros y lo de graficar las estadisticas, además creé un nuevo archivo html llamado detalle.html en donde direccionó a la pagina en donde se mostrararn las actividades de los usuarios
