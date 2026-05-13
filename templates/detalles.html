@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades del Miembro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Actividades</h1>
+        <nav>
+            <a class="navbar-page" href="{{ url_for('index') }}">Volver al Menú principal</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="section-container">
+            <header class="grupo-input">
+                <h2 class="detalle-nombre">Actividades de {{ miembro.nombre }}</h2>
+            </header>
+            
+            <hr class="separador-detalle">
+
+            {% if miembro.actividades %}
+                {% for act in miembro.actividades %}
+                    <div class="actividad-card">
+                        <h3 class="actividad-titulo">
+                            {{ act.nombre }} <span class="actividad-tipo">({{ act.tipo|capitalize }})</span>
+                        </h3>
+                        
+                        <div class="grupo-input">
+                            <p><strong>Fecha:</strong> {{ act.dia|capitalize }} a las {{ act.hora_inicio }}</p>
+                            <p><strong>Duración (hasta que hora se realiza):</strong> {{ act.duracion }}</p>
+                            <p><strong>Descripción:</strong> {{ act.descripcion or 'Sin descripción.' }}</p>
+                        </div>
+
+                        <h4 class="multimedia-titulo">Contenido Multimedia:</h4>
+                        <div class="multimedia-grid">
+                            {% for foto in act.fotos %}
+                                {% set ext = foto.nombre_archivo.split('.')[-1].lower() %}
+                                <div class="multimedia-item-container">
+                                    {% if ext in ['jpg', 'jpeg', 'png', 'gif'] %}
+                                        <img src="{{ url_for('static', filename='uploads/' + foto.nombre_archivo) }}" 
+                                             alt="Imagen de la actividad {{ act.nombre }}" 
+                                             class="media-content">
+                                    {% elif ext in ['mp4', 'webm'] %}
+                                        <video class="media-content" controls>
+                                            <source src="{{ url_for('static', filename='uploads/' + foto.nombre_archivo) }}" type="video/{{ ext }}">
+                                            Tu navegador no soporta el video.
+                                        </video>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="mensaje-vacio">
+                    <p>Este miembro aún no tiene actividades registradas.</p>
+                </div>
+            {% endif %}
+
+            <div class="contenedor-boton-volver">
+                <a href="{{ url_for('listado_miembros') }}" class="btn-volver">
+                    Volver al listado
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
