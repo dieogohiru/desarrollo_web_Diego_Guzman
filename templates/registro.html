@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Registro de Comunidad</h1>
+        <nav>
+            <a class="navbar-page" href="{{ url_for('index') }}">Volver al Menú Principal</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% if not m_id %}
+        <form class="formulario" id="form-miembro" method="POST" action="{{ url_for('registrar_miembro') }}" novalidate>
+            <section id="seccion-miembro">
+                <header>
+                    <h2>1. Datos del Miembro</h2>
+                    <p><small>(*) Campos obligatorios</small></p>
+                </header>
+                
+                <div class="grupo-input">
+                    <label for="nombre">Nombre Completo (*)</label>
+                    <input id="nombre" name="nombre" type="text" maxlength="255" placeholder="Ejemplo: Pedro Pablo" value="{{ datos_previos.get('nombre', '') }}">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="email">Email (*)</label>
+
+                    <input id="email" name="email" type="email"  maxlength="80" placeholder="Ejemplo: pedro.p@gmail.com" value="{{ datos_previos.get('email', '') }}">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="telefono">Número de Teléfono (*)</label>
+                    <div class="input-prefijo fila-telefono">
+                        <span class="prefijo-cl">+56 9</span>
+                        <input id="telefono" name="telefono" type="text"  maxlength="8" placeholder="12345678" class="input-telefono" value="{{ datos_previos.get('telefono', '') }}">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="region">Región (*)</label>
+                    <select id="region" name="region" onchange="cargarComunas(this.value)">
+                        <option value="">Seleccione Región...</option>
+                        {% for r in regiones %}
+                        <option value="{{ r.id }}">{{ r.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="comuna">Comuna (*)</label>
+                    <select id="comuna" name="comuna_id" disabled>
+                        <option value="">Seleccione primero una región...</option>
+                    </select>
+                </div>
+
+                <footer class="contenedor-botones-registro">
+                    <button type="submit" class="button">Guardar Miembro y Continuar</button>
+                </footer>
+            </section>
+        </form>
+        {% endif %}
+
+        {% if m_id %}
+        <form class="formulario" id="form-actividad" method="POST" action="{{ url_for('registrar_actividad', m_id=m_id) }}" enctype="multipart/form-data" novalidate>
+            <section id="seccion-actividad">
+                <header>
+                    <h2>2. Registre su Actividad</h2>        
+                </header>
+
+                <div class="grupo-input">
+                    <label for="tipo-act">Categoría (*)</label>
+                    <select id="tipo-act" name="tipo_actividad">
+                        <option value="">Seleccione...</option>
+                        <option value="arte">Arte</option>
+                        <option value="deporte">Deporte</option>
+                        <option value="tecnología">Tecnología</option>
+                        <option value="social">Social</option>
+                        <option value="recreación">Recreación</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="nombre_act">Nombre de la Actividad (*)</label>
+                    <input id="nombre_act" name="nombre_actividad" type="text" maxlength="45" placeholder="Ejemplo: Futsal">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="dia">Día de realización (*)</label>
+                    <select id="dia" name="dia">
+                        <option value="lunes">Lunes</option>
+                        <option value="martes">Martes</option>
+                        <option value="miércoles">Miércoles</option>
+                        <option value="jueves">Jueves</option>
+                        <option value="viernes">Viernes</option>
+                        <option value="sábado">Sábado</option>
+                        <option value="domingo">Domingo</option>
+                    </select>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="hora_inicio">Hora de Inicio (*)</label>
+                    <input id="hora_inicio" name="hora_inicio" type="time">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="duracion">Duración (Hasta que hora realizas la actividad) (*)</label>
+                    <input id="duracion" name="duracion" type="time" step="60">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="descripcion">Descripción</label>
+                    <input id="descripcion" name="descripcion" type="text" maxlength="500" placeholder="Ejemplo: Taller de futsal de mi universidad">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="foto">Adjuntar Archivos (Máx 3 - Fotos o Videos) (*)</label>
+                    <input id="foto" name="foto" type="file" accept="image/*,video/*" multiple >
+                    <small>Máximo 3 archivos. Límite: 50MB por archivo.</small>
+                </div>
+
+                <footer class="contenedor-botones-registro">
+                    <button type="submit" name="accion" value="finalizar" class="button">
+                        Finalizar y Volver al Menú
+                    </button>
+
+                    <button type="submit" name="accion" value="repetir" class="button btn-azul">
+                        Subir y Registrar otra Actividad
+                    </button>
+                </footer>
+            </section>
+        </form>
+        {% endif %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/validador.js') }}"></script>
+</body>
+</html>
