@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Estadísticas</h1>
+        <nav>
+            <a class="navbar-page" href="{{ url_for('index') }}">Volver al Menú Principal</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="section-container contenedor-estadisticas">
+            <header>
+                <h2>Estadísticas</h2>
+                <p>Cantidad de miembros por cada tipo de actividad registrada.</p>
+            </header>
+
+            <div class="grafico-placeholder espaciado-superior">
+                <img src="{{ url_for('static', filename='img/grafico.png') }}" 
+                     alt="Gráfico de barras mostrando la distribución de actividades" 
+                     class="grafico-img">
+            </div>
+            
+            <div class="espaciado-boton">
+                <a href="{{ url_for('index') }}" class="button btn-volver">
+                    Volver al Menú Principal
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
