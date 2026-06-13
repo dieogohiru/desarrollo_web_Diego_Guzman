@@ -117,10 +117,6 @@ def get_comunas(reg_id):
     comunas = db.get_comunas_by_region(reg_id)
     return jsonify([{'id': c.id, 'nombre': c.nombre} for c in comunas])
 
-
-
-
-
 @app.route('/actividades/<int:actividad_id>/comentarios', methods=['GET'])
 def get_comentarios(actividad_id):
     comentarios = db.get_comentarios_actividad(actividad_id)
@@ -141,12 +137,6 @@ def add_comentario(actividad_id):
     
     return jsonify({"success": True, "mensaje": "Comentario guardado correctamente."})
 
-
-
-
-
-
-
 @app.route('/estadisticas')
 def estadisticas():
     return render_template('estadisticas.html')
@@ -165,8 +155,6 @@ def actividades_tipo():
 def actividades_comuna():
     datos = db.get_stats_actividades_por_comuna()
     return jsonify(datos)   
-
-
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
