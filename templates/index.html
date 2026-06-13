@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComunidaDCC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>ComunidaDCC</h1>
+    </header>
+
+    <main class="container portada-main">
+        <section class="bienvenida">
+            <h2>¡Bienvenido a la página ComunidaDCC!</h2>
+            <p>Selecciona una opción del menú para comenzar.</p>
+        </section>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alerta-flash">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <section>
+            <h3>Opciones:</h3>
+            <nav class="botones-menu">
+                <a href="{{ url_for('registrar_miembro') }}" class="btn-menu">Registrar Miembro y Actividades</a>
+                <a href="{{ url_for('listado_miembros') }}" class="btn-menu">Ver Listado de Miembros</a>
+                <a href="{{ url_for('estadisticas') }}" class="btn-menu">Ver Estadísticas</a>
+            </nav>
+        </section>
+
+        <hr class="separador-portada">
+
+        <section class="ultimos-miembros">
+            <h3>Últimos 5 Miembros Registrados</h3>
+            <div class="tabla-contenedor-portada">
+                <table class="tabla-portada">
+                    <thead>
+                        <tr class="fila-encabezado">
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Comuna</th>
+                            <th>Teléfono</th>
+                            <th>Fecha de Registro</th>
+                            <th>Actividades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for miembro in miembros %}
+                            <tr>
+                                <td>{{ miembro.nombre }}</td>
+                                <td>{{ miembro.email }}</td>
+                                <td>{{ miembro.comuna.nombre if miembro.comuna else 'N/A' }}</td>
+                                <td> +56 9 {{ miembro.telefono }}</td>
+                                <td>{{ miembro.fecha_registro.strftime('%d/%m/%Y a las %H:%M') }}</td>
+                                <td>
+                                    <a href="{{ url_for('ver_miembro', id=miembro.id) }}">Ver Actividades</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">No hay miembros registrados todavía.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
