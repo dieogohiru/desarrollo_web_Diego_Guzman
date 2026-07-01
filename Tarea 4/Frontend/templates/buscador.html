@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Actividades</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Buscador de Actividades</h1>
+        <a class="navbar-page" href="{{ url_for('index') }}">Volver al Menú Principal</a>
+    </header>
+    <main class="main-container">
+        <div class="container">
+            <section class="filtros-container">
+                <div class="formulario-filtros">
+                    <input type="text" id="inputBusqueda" class="input-busqueda" oninput="ejecutarBusqueda(this.value)" placeholder="Escribe al menos 3 letras para buscar actividades...">
+                </div>
+            </section>
+
+            <section id="resultadosBusqueda"></section>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/buscador.js') }}"></script>
+</body>
+</html>

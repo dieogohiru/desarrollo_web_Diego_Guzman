@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Miembros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Lista de Miembros</h1>
+        <nav>
+            <a class="navbar-page" href="{{ url_for('index') }}">Volver al Menú Principal</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="section-container">
+            <header class="filtros-container">
+                <form action="{{ url_for('listado_miembros') }}" method="GET" class="formulario-filtros">
+                    <input type="text" name="busqueda" class="input-busqueda" placeholder="Buscar por nombre..." value="{{ request.args.get('busqueda', '') }}">
+                    <select name="filtro_comuna" class="select-comuna">
+                        <option value="">Todas las Comunas</option>
+                        {% for c in comunas %}
+                            <option value="{{ c.id }}" {% if request.args.get('filtro_comuna')|int == c.id %}selected{% endif %}>
+                                {{ c.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Filtrar</button>
+                    <a href="{{ url_for('listado_miembros') }}" class="btn-limpiar">Limpiar</a>
+                </form>
+            </header>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Comuna</th>
+                            <th>Teléfono</th>
+                            <th>Fecha de Registro</th>
+                            <th>Actividades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for miembro in miembros %}
+                        <tr>
+                            <td>{{ miembro.nombre }}</td>
+                            <td>{{ miembro.email }}</td>
+                            <td>{{ miembro.comuna.nombre if miembro.comuna else 'N/A' }}</td>
+                            <td>+56 9 {{ miembro.telefono }}</td>
+                            <td>{{ miembro.fecha_registro.strftime('%d/%m/%Y a las %H:%M') }}</td>
+                            <td>
+                                <a href="{{ url_for('ver_miembro', id=miembro.id) }}">Ver Actividades</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <footer class="paginacion">
+                {% if pagina > 1 %}
+                    <a href="{{ url_for('listado_miembros', pagina=pagina-1, busqueda=request.args.get('busqueda', ''), filtro_comuna=request.args.get('filtro_comuna', '')) }}" 
+                    class="btn-paginacion">« Anterior</a>
+                {% endif %}
+
+                <span class="indicador-pagina">Página {{ pagina }}</span>
+
+                {% if tiene_sig %}
+                    <a href="{{ url_for('listado_miembros', pagina=pagina+1, busqueda=request.args.get('busqueda', ''), filtro_comuna=request.args.get('filtro_comuna', '')) }}" 
+                    class="btn-paginacion">Siguiente »</a>
+                {% endif %}
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
