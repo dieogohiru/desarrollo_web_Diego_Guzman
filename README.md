@@ -1,1 +1,1 @@
-# desarrollo_web_Diego_Guzman
+No creé una carpeta `services` porque las funciones requeridas en esta tarea eran sencillas y directas. Deje la lógica en los controladores para asi evitar crear archivos innecesarios, asi mantuve el proyecto más simple y ordenado.
